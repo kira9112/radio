@@ -3,11 +3,11 @@ package constructor;
 public class Radio {
     private int currentNumStation;
     private int currentVolume;
-    private int maxNumStation = 9;
     private int minNumStation = 0;
     private int maxVolume = 100;
     private int minVolume = 0;
-    private int amountStation = 10;
+    private int maxNumStation= 9;
+    private int amountStation = maxNumStation+1;
 
     public Radio() {
     }
@@ -15,6 +15,7 @@ public class Radio {
     public Radio(int amountStation) {
         this.amountStation = amountStation;
     }
+
 
 
     public void setCurrentStation(int currentStation) {
@@ -30,6 +31,7 @@ public class Radio {
 
 
     }
+
 
 
     public int getCurrentVolume() {
@@ -86,20 +88,29 @@ public class Radio {
             return;
         }
         this.currentNumStation = currentStation;
+
+    }
+    public void setMaxStationWithLimiter() {
+        maxNumStation= amountStation-1;
+        return;
+    }
+    public int getMaxNumStation() {
+        return maxNumStation;
+
     }
 
     public void setStationWithPushNextButtonWithLimiter() {
-        if (currentNumStation == amountStation) {
+        if (currentNumStation == amountStation-1) {
             currentNumStation = minNumStation;
             return;
         }
-        currentNumStation++;
+       currentNumStation++;
 
     }
 
     public void setStationWithPushPrewButtonWithLimiter() {
         if (currentNumStation == minNumStation) {
-            currentNumStation = amountStation;
+            currentNumStation = amountStation-1;
             return;
         }
         --currentNumStation;

@@ -15,17 +15,17 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldSetStationWithLimiter() {
+    public void shouldSetMaxStationWithLimiter() {
         Radio radio = new Radio(5);
-        radio.setCurrentStationWithLimiter(4);
-        assertEquals(4, radio.getCurrentNumStation());
+        radio.setMaxStationWithLimiter();
+        assertEquals(4, radio.getMaxNumStation());
     }
 
     @Test
     public void shouldSetStationAboveLimiter() {
         Radio radio = new Radio(5);
-        radio.setCurrentStationWithLimiter(6);
-        assertEquals(0, radio.getCurrentNumStation());
+        radio.setCurrentStationWithLimiter(3);
+        assertEquals(3, radio.getCurrentNumStation());
     }
 
 
@@ -70,9 +70,9 @@ public class RadioTest {
     @Test
     public void ShouldSetStationWithPushNextButtonWithLimiter() {
         Radio radio = new Radio(5);
-        radio.setCurrentStationWithLimiter(4);
+        radio.setCurrentStation(3);
         radio.setStationWithPushNextButtonWithLimiter();
-        assertEquals(5, radio.getCurrentNumStation());
+        assertEquals(4, radio.getCurrentNumStation());
     }
 
     @Test
@@ -84,7 +84,7 @@ public class RadioTest {
     @Test
     public void ShouldSetStationWithPushNextButtonAboveMaxWithLimiter() {
         Radio radio = new Radio(5);
-        radio.setCurrentStation(5);
+        radio.setCurrentStation(4);
         radio.setStationWithPushNextButtonWithLimiter();
         assertEquals(0, radio.getCurrentNumStation());
     }
@@ -108,7 +108,7 @@ public class RadioTest {
         Radio radio = new Radio(5);
         radio.setCurrentStation(0);
         radio.setStationWithPushPrewButtonWithLimiter();
-        assertEquals(5, radio.getCurrentNumStation());
+        assertEquals(4, radio.getCurrentNumStation());
     }
 
     @Test
