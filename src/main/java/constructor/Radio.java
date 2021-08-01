@@ -1,17 +1,26 @@
-package ru.netology.domain;
+package constructor;
 
 public class Radio {
     private int currentNumStation;
     private int currentVolume;
-    private int maxNumStation = 9;
     private int minNumStation = 0;
-    private int maxVolume = 10;
+    private int maxVolume = 100;
     private int minVolume = 0;
+    private int maxNumStation= 9;
+    private int amountStation = maxNumStation+1;
+
+    public Radio() {
+    }
+
+    public Radio(int amountStation) {
+        this.amountStation = amountStation;
+    }
+
 
 
     public void setCurrentStation(int currentStation) {
         if (currentStation > maxNumStation || currentStation < minNumStation) {
-            this.currentNumStation = minNumStation;
+            this.currentNumStation = currentNumStation;
             return;
         }
         this.currentNumStation = currentStation;
@@ -22,6 +31,8 @@ public class Radio {
 
 
     }
+
+
 
     public int getCurrentVolume() {
         return currentVolume;
@@ -70,7 +81,42 @@ public class Radio {
 
         this.currentVolume = currentVolume;
     }
+
+    public void setCurrentStationWithLimiter(int currentStation) {
+        if (currentStation > amountStation || currentStation < minNumStation) {
+            this.currentNumStation = currentNumStation;
+            return;
+        }
+        this.currentNumStation = currentStation;
+
+    }
+    public void setMaxStationWithLimiter() {
+        maxNumStation= amountStation-1;
+        return;
+    }
+    public int getMaxNumStation() {
+        return maxNumStation;
+
+    }
+
+    public void setStationWithPushNextButtonWithLimiter() {
+        if (currentNumStation == amountStation-1) {
+            currentNumStation = minNumStation;
+            return;
+        }
+       currentNumStation++;
+
+    }
+
+    public void setStationWithPushPrewButtonWithLimiter() {
+        if (currentNumStation == minNumStation) {
+            currentNumStation = amountStation-1;
+            return;
+        }
+        --currentNumStation;
+    }
 }
+
 
 
 
