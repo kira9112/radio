@@ -1,5 +1,12 @@
 package constructor;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Radio {
     private int currentNumStation;
     private int currentVolume;
@@ -8,8 +15,8 @@ public class Radio {
     private int minVolume = 0;
     private int amountStation = 10;
 
-    public Radio() {
-    }
+   //public Radio() {
+    //}
 
     public Radio(int amountStation) {
         this.amountStation = amountStation;
