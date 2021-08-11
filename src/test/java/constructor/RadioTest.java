@@ -10,21 +10,7 @@ public class RadioTest {
 
     @Test
     public void shouldSetStation() {
-        radio.setCurrentStation(9);
-        assertEquals(9, radio.getCurrentNumStation());
-    }
-
-    @Test
-    public void shouldSetMaxStationWithLimiter() {
-        Radio radio = new Radio(5);
-        radio.setMaxStationWithLimiter();
-        assertEquals(4, radio.getMaxNumStation());
-    }
-
-    @Test
-    public void shouldSetStationAboveLimiter() {
-        Radio radio = new Radio(5);
-        radio.setCurrentStationWithLimiter(3);
+        radio.setCurrentStation(3);
         assertEquals(3, radio.getCurrentNumStation());
     }
 
@@ -33,46 +19,34 @@ public class RadioTest {
     public void shouldNotSetStationWithNumButtonLowMin() {
         radio.setCurrentStation(-1);
         assertEquals(0, radio.getCurrentNumStation());
-
-
-    }
-    @Test
-    public void shouldNotSetStationWithNumButtonLowMinWithLimiter() {
-        Radio radio = new Radio(5);
-        radio.setCurrentStationWithLimiter(-1);
-        assertEquals(0, radio.getCurrentNumStation());
-
-
     }
 
     @Test
     public void shouldNotSetStationWithNumButtonAboveMax() {
         radio.setCurrentStation(10);
         assertEquals(0, radio.getCurrentNumStation());
-
     }
+
     @Test
-    public void shouldNotSetStationWithNumButtonAboveMaxWithLimiter() {
+    public void shouldNotSetStationWithNumButtonAboveMaxUseConstructor() {
         Radio radio = new Radio(5);
-        radio.setCurrentStationWithLimiter(10);
+        radio.setCurrentStation(5);
         assertEquals(0, radio.getCurrentNumStation());
-
     }
-
 
     @Test
     public void ShouldSetStationWithPushNextButton() {
-        radio.setCurrentStation(5);
+        radio.setCurrentStation(1);
         radio.setStationWithPushNextButton();
-        assertEquals(6, radio.getCurrentNumStation());
+        assertEquals(2, radio.getCurrentNumStation());
     }
 
     @Test
-    public void ShouldSetStationWithPushNextButtonWithLimiter() {
+    public void ShouldSetStationWithPushNextButtonAboveMaxUseConstructor() {
         Radio radio = new Radio(5);
-        radio.setCurrentStation(3);
-        radio.setStationWithPushNextButtonWithLimiter();
-        assertEquals(4, radio.getCurrentNumStation());
+        radio.setCurrentStation(4);
+        radio.setStationWithPushNextButton();
+        assertEquals(0, radio.getCurrentNumStation());
     }
 
     @Test
@@ -81,18 +55,18 @@ public class RadioTest {
         radio.setStationWithPushNextButton();
         assertEquals(0, radio.getCurrentNumStation());
     }
-    @Test
-    public void ShouldSetStationWithPushNextButtonAboveMaxWithLimiter() {
-        Radio radio = new Radio(5);
-        radio.setCurrentStation(4);
-        radio.setStationWithPushNextButtonWithLimiter();
-        assertEquals(0, radio.getCurrentNumStation());
-    }
-
 
     @Test
     public void shouldSetStationWithPushPrewButton() {
-        radio.setCurrentStation(5);
+        radio.setCurrentStation(3);
+        radio.setStationWithPushPrewButton();
+        assertEquals(2, radio.getCurrentNumStation());
+    }
+
+    @Test
+    public void shouldSetStationWithPushPrewButtonLowMinUseConstructor() {
+        Radio radio = new Radio(5);
+        radio.setCurrentStation(0);
         radio.setStationWithPushPrewButton();
         assertEquals(4, radio.getCurrentNumStation());
     }
@@ -102,21 +76,6 @@ public class RadioTest {
         radio.setCurrentStation(0);
         radio.setStationWithPushPrewButton();
         assertEquals(9, radio.getCurrentNumStation());
-    }
-    @Test
-    public void shouldSetStationWithPushPrewButtonLowMinWithLimiter() {
-        Radio radio = new Radio(5);
-        radio.setCurrentStation(0);
-        radio.setStationWithPushPrewButtonWithLimiter();
-        assertEquals(4, radio.getCurrentNumStation());
-    }
-
-    @Test
-    public void shouldSetStationWithPushPrewButtonWithLimiter() {
-        Radio radio = new Radio(5);
-        radio.setCurrentStation(5);
-        radio.setStationWithPushPrewButtonWithLimiter();
-        assertEquals(4, radio.getCurrentNumStation());
     }
 
     @Test

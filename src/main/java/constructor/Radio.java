@@ -1,25 +1,30 @@
 package constructor;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Radio {
     private int currentNumStation;
     private int currentVolume;
     private int minNumStation = 0;
     private int maxVolume = 100;
     private int minVolume = 0;
-    private int maxNumStation= 9;
-    private int amountStation = maxNumStation+1;
+    private int amountStation = 10;
 
-    public Radio() {
-    }
+   //public Radio() {
+    //}
 
     public Radio(int amountStation) {
         this.amountStation = amountStation;
     }
 
 
-
     public void setCurrentStation(int currentStation) {
-        if (currentStation > maxNumStation || currentStation < minNumStation) {
+        if (currentStation >= amountStation || currentStation < minNumStation) {
             this.currentNumStation = currentNumStation;
             return;
         }
@@ -33,13 +38,12 @@ public class Radio {
     }
 
 
-
     public int getCurrentVolume() {
         return currentVolume;
     }
 
     public void setStationWithPushNextButton() {
-        if (currentNumStation == maxNumStation) {
+        if (currentNumStation == amountStation - 1) {
             currentNumStation = minNumStation;
             return;
         }
@@ -50,7 +54,7 @@ public class Radio {
 
     public void setStationWithPushPrewButton() {
         if (currentNumStation == minNumStation) {
-            currentNumStation = maxNumStation;
+            currentNumStation = amountStation - 1;
             return;
         }
         --currentNumStation;
@@ -82,39 +86,6 @@ public class Radio {
         this.currentVolume = currentVolume;
     }
 
-    public void setCurrentStationWithLimiter(int currentStation) {
-        if (currentStation > amountStation || currentStation < minNumStation) {
-            this.currentNumStation = currentNumStation;
-            return;
-        }
-        this.currentNumStation = currentStation;
-
-    }
-    public void setMaxStationWithLimiter() {
-        maxNumStation= amountStation-1;
-        return;
-    }
-    public int getMaxNumStation() {
-        return maxNumStation;
-
-    }
-
-    public void setStationWithPushNextButtonWithLimiter() {
-        if (currentNumStation == amountStation-1) {
-            currentNumStation = minNumStation;
-            return;
-        }
-       currentNumStation++;
-
-    }
-
-    public void setStationWithPushPrewButtonWithLimiter() {
-        if (currentNumStation == minNumStation) {
-            currentNumStation = amountStation-1;
-            return;
-        }
-        --currentNumStation;
-    }
 }
 
 
